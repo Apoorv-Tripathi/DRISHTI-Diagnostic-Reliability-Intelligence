@@ -1,8 +1,13 @@
 // Real Connected API Client for PROJECT D.R.I.S.H.T.I.
 // Strict backend communication with JWT Authentication & MongoDB Atlas persistence
 
-const rawApiBase = import.meta.env.VITE_API_BASE_URL || '/api';
-const API_BASE = rawApiBase.replace(/\/+$/, '');
+let rawApiBase = import.meta.env.VITE_API_BASE_URL || '/api';
+rawApiBase = rawApiBase.trim().replace(/\/+$/, '');
+// Auto-append /api if user supplied base URL without /api path
+if (rawApiBase.startsWith('http') && !rawApiBase.endsWith('/api')) {
+  rawApiBase += '/api';
+}
+const API_BASE = rawApiBase;
 
 // Helper to get stored JWT token
 export const getAuthToken = () => {

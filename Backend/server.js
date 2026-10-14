@@ -61,17 +61,30 @@ app.use((req, res, next) => {
   next();
 });
 
-// Mount API routes
+// Mount API routes (support both /api/* and root paths for cloud resilience)
 app.use('/api/aircraft', aircraftRoutes);
+app.use('/aircraft', aircraftRoutes);
+
 app.use('/api/alerts', alertRoutes);
+app.use('/alerts', alertRoutes);
+
 app.use('/api/spares', sparesRoutes);
+app.use('/spares', sparesRoutes);
+
 app.use('/api/maintenance', maintenanceRoutes);
+app.use('/maintenance', maintenanceRoutes);
+
 app.use('/api/telemetry', telemetryRoutes);
+app.use('/telemetry', telemetryRoutes);
+
 app.use('/api/analytics', analyticsRoutes);
+app.use('/analytics', analyticsRoutes);
+
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 
 // Users & Demo accounts route (queries MongoDB)
-app.get('/api/users', async (req, res) => {
+const handleUsersRequest = async (req, res) => {
   try {
     const users = await User.find({}).select('-password').sort({ role: 1 });
     if (users && users.length > 0) {
@@ -82,7 +95,10 @@ app.get('/api/users', async (req, res) => {
   }
   const { demoUsers } = await import('./data/initialData.js');
   res.json({ success: true, count: demoUsers.length, data: demoUsers });
-});
+};
+
+app.get('/api/users', handleUsersRequest);
+app.get('/users', handleUsersRequest);
 
 // Serve built React frontend if present
 const possibleDistPaths = [
