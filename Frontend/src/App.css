@@ -1,0 +1,1052 @@
+/* ==========================================================================
+   PROJECT D.R.I.S.H.T.I. — AVIATION ENTERPRISE DESIGN SYSTEM
+   Inspired by Skyline Aircraft Management UI & Soge Digital Aviation Color Spec
+   Colors:
+     #1DC30A (Healthy Green)
+     #FF4F34 (Critical Coral Red)
+     #FFA034 (Warning Amber Orange)
+     #F2F2F2 (Canvas Soft Grey)
+     #333333 (Charcoal Dark Accent)
+     #FFFFFF (Pure White Surface)
+   Typography: Plus Jakarta Sans / JetBrains Mono
+   ========================================================================== */
+
+:root {
+  /* Official Palette from User Swatch */
+  --skyline-green: #1DC30A;
+  --skyline-green-subtle: rgba(29, 195, 10, 0.12);
+  --skyline-green-border: rgba(29, 195, 10, 0.35);
+
+  --skyline-red: #FF4F34;
+  --skyline-red-subtle: rgba(255, 79, 52, 0.12);
+  --skyline-red-border: rgba(255, 79, 52, 0.35);
+
+  --skyline-amber: #FFA034;
+  --skyline-amber-subtle: rgba(255, 160, 52, 0.12);
+  --skyline-amber-border: rgba(255, 160, 52, 0.35);
+
+  --skyline-canvas: #F2F2F2;
+  --skyline-charcoal: #333333;
+  --skyline-white: #FFFFFF;
+
+  /* Secondary Neutrals */
+  --skyline-slate-light: #F8F9FA;
+  --skyline-text-muted: #828894;
+  --skyline-text-secondary: #5C6270;
+  --skyline-border: #E5E8EC;
+  --skyline-border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Skyline Card Curves */
+  --radius-pill: 9999px;
+  --radius-card: 20px;
+  --radius-inner: 14px;
+  --radius-sm: 8px;
+
+  /* Elevation */
+  --shadow-skyline: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-float: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   GLOBAL RESET & ELEMENT NORMALIZATION
+   Crucial: Eliminates default raw browser chrome on buttons & inputs!
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: inherit;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--skyline-charcoal);
+  outline-offset: 2px;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Base Setup */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--skyline-canvas);
+  color: var(--skyline-charcoal);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--skyline-charcoal);
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+.text-muted-custom {
+  color: var(--skyline-text-muted) !important;
+}
+
+/* ==========================================================================
+   SKYLINE BUTTON SYSTEM (Both .skyline-btn-* and .btn-skyline-* Supported)
+   ========================================================================== */
+.skyline-btn-dark,
+.btn-skyline-dark {
+  background: var(--skyline-charcoal);
+  color: var(--skyline-white) !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.84rem;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--skyline-charcoal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.skyline-btn-dark:hover,
+.btn-skyline-dark:hover {
+  background: #1A1A1A;
+  border-color: #1A1A1A;
+  color: var(--skyline-white) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(51, 51, 51, 0.22);
+}
+
+.skyline-btn-dark:active,
+.btn-skyline-dark:active {
+  transform: translateY(0);
+}
+
+.skyline-btn-dark:disabled,
+.btn-skyline-dark:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.skyline-btn-secondary,
+.btn-skyline-outline {
+  background: var(--skyline-white);
+  color: var(--skyline-charcoal) !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.84rem;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #D1D5DB;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.skyline-btn-secondary:hover,
+.btn-skyline-outline:hover {
+  background: #F9FAFB;
+  border-color: #9CA3AF;
+  color: var(--skyline-charcoal) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.skyline-btn-secondary:active,
+.btn-skyline-outline:active {
+  transform: translateY(0);
+}
+
+.skyline-btn-amber,
+.btn-skyline-amber {
+  background: var(--skyline-amber);
+  color: var(--skyline-white) !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.84rem;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--skyline-amber);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.16s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.skyline-btn-amber:hover,
+.btn-skyline-amber:hover {
+  background: #E89128;
+  border-color: #E89128;
+  color: var(--skyline-white) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 160, 52, 0.28);
+}
+
+.skyline-btn-green {
+  background: var(--skyline-green);
+  color: var(--skyline-white) !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.84rem;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--skyline-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.16s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.skyline-btn-green:hover {
+  background: #179e08;
+  border-color: #179e08;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(29, 195, 10, 0.28);
+}
+
+.skyline-btn-red {
+  background: var(--skyline-red);
+  color: var(--skyline-white) !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.84rem;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--skyline-red);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.16s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.skyline-btn-red:hover {
+  background: #e03b22;
+  border-color: #e03b22;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 79, 52, 0.28);
+}
+
+/* ==========================================================================
+   PILL STATUS BADGES & TABS (Aeronautical Faded Tint System)
+   Official Palette: #1DC30A (Green), #FF4F34 (Red), #FFA034 (Amber),
+                     #F2F2F2 (Canvas), #333333 (Charcoal), #FFFFFF (White)
+   ========================================================================== */
+.skyline-pill {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.22rem 0.75rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  line-height: 1.25;
+  transition: all 0.15s ease;
+}
+
+/* Green: Healthy / Mission Capable / Active / Nominal */
+.skyline-pill-green {
+  background: rgba(29, 195, 10, 0.08) !important;
+  color: #0F8205 !important;
+  border: 1px solid rgba(29, 195, 10, 0.28) !important;
+}
+
+/* Amber: Warning / Partial / In Progress / Advisory */
+.skyline-pill-amber {
+  background: rgba(255, 160, 52, 0.09) !important;
+  color: #A85B00 !important;
+  border: 1px solid rgba(255, 160, 52, 0.30) !important;
+}
+
+/* Red: Critical / Grounded / Under Inspection / High Risk */
+.skyline-pill-red {
+  background: rgba(255, 79, 52, 0.08) !important;
+  color: #D32F1A !important;
+  border: 1px solid rgba(255, 79, 52, 0.28) !important;
+}
+
+/* Dark: Tactical Identifier / Specification / Airbase */
+.skyline-pill-dark {
+  background: #F1F3F5 !important;
+  color: #2D3748 !important;
+  border: 1px solid #D5DAE1 !important;
+}
+
+/* Solid Tactical Dark Accent (when explicitly specified) */
+.skyline-pill-solid-dark {
+  background: #252830 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #1F2228 !important;
+}
+
+/* Pill Badges with Semantic State Classes */
+.skyline-pill-badge {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.22rem 0.8rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+.skyline-pill-badge.critical {
+  background: rgba(255, 79, 52, 0.08) !important;
+  color: #D32F1A !important;
+  border: 1px solid rgba(255, 79, 52, 0.28) !important;
+}
+
+.skyline-pill-badge.warning {
+  background: rgba(255, 160, 52, 0.09) !important;
+  color: #A85B00 !important;
+  border: 1px solid rgba(255, 160, 52, 0.30) !important;
+}
+
+.skyline-pill-badge.normal,
+.skyline-pill-badge.healthy {
+  background: rgba(29, 195, 10, 0.08) !important;
+  color: #0F8205 !important;
+  border: 1px solid rgba(29, 195, 10, 0.28) !important;
+}
+
+.skyline-pill-badge.neutral {
+  background: #F1F3F5 !important;
+  color: #4A5568 !important;
+  border: 1px solid #D5DAE1 !important;
+}
+
+/* Soft Tint Pill Badges */
+.skyline-pill-soft {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  line-height: 1.25;
+}
+
+.skyline-pill-soft.critical {
+  background: var(--skyline-red-subtle);
+  color: #D32F1A;
+  border: 1px solid var(--skyline-red-border);
+}
+
+.skyline-pill-soft.warning {
+  background: var(--skyline-amber-subtle);
+  color: #A85B00;
+  border: 1px solid var(--skyline-amber-border);
+}
+
+.skyline-pill-soft.normal,
+.skyline-pill-soft.healthy {
+  background: var(--skyline-green-subtle);
+  color: #0F8205;
+  border: 1px solid var(--skyline-green-border);
+}
+
+/* Minimal Telemetry Subsystem Indicator Chips */
+.skyline-telemetry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.55rem;
+  background: #F8F9FA;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #334155;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.skyline-telemetry-chip .chip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Interactive Pill Tab Switchers (e.g. ALL, Assigned, In Progress, Completed) */
+.skyline-pill-tab {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--skyline-white);
+  color: var(--skyline-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  border: 1px solid var(--skyline-border);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  line-height: 1.3;
+}
+
+.skyline-pill-tab:hover {
+  background: #F8F9FA;
+  color: var(--skyline-charcoal);
+  border-color: #CBD5E1;
+}
+
+.skyline-pill-tab.active {
+  background: var(--skyline-charcoal) !important;
+  color: var(--skyline-white) !important;
+  border-color: var(--skyline-charcoal) !important;
+  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.2);
+}
+
+/* Secondary Subnav Tabs */
+.skyline-subnav-pills {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.25rem 0;
+  scrollbar-width: none;
+}
+
+.skyline-subnav-pill {
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--skyline-white);
+  color: var(--skyline-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  border: 1px solid var(--skyline-border-subtle);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.skyline-subnav-pill:hover {
+  background: #F9FAFB;
+  color: var(--skyline-charcoal);
+}
+
+.skyline-subnav-pill.active {
+  background: var(--skyline-charcoal);
+  color: var(--skyline-white);
+  border-color: var(--skyline-charcoal);
+  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.18);
+}
+
+/* ==========================================================================
+   TOP NAVIGATION BAR (Skyline Pill Style)
+   ========================================================================== */
+.skyline-navbar-container {
+  background-color: var(--skyline-canvas);
+  padding: 0.85rem 1.5rem 0.5rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+}
+
+.skyline-navbar {
+  background: var(--skyline-white);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-skyline);
+  border: 1px solid var(--skyline-border-subtle);
+  gap: 1rem;
+}
+
+/* Brand Logo (Winged Emblem) */
+.skyline-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--skyline-charcoal);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.skyline-brand:hover {
+  color: var(--skyline-charcoal);
+}
+
+.skyline-brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--skyline-charcoal);
+  color: var(--skyline-white);
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Center Pill Nav Links */
+.skyline-nav-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--skyline-canvas);
+  padding: 0.25rem 0.35rem;
+  border-radius: var(--radius-pill);
+}
+
+.skyline-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--radius-pill);
+  color: var(--skyline-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.skyline-nav-link:hover {
+  color: var(--skyline-charcoal);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.skyline-nav-link.active {
+  background: var(--skyline-charcoal);
+  color: var(--skyline-white);
+  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.2);
+}
+
+.skyline-nav-link.active svg {
+  color: var(--skyline-white);
+}
+
+/* Right Header Controls */
+.skyline-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.skyline-user-capsule {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--skyline-canvas);
+  padding: 0.25rem 0.35rem 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skyline-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: var(--skyline-canvas);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--skyline-charcoal);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.skyline-icon-btn:hover {
+  background: #E5E7EB;
+  color: var(--skyline-charcoal);
+}
+
+.skyline-icon-btn.logout:hover {
+  background: rgba(255, 79, 52, 0.12);
+  color: var(--skyline-red);
+}
+
+.skyline-badge-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--skyline-red);
+  box-shadow: 0 0 0 2px var(--skyline-white);
+}
+
+/* ==========================================================================
+   SKYLINE CARD & CONTAINER ARCHITECTURE
+   ========================================================================== */
+.skyline-card {
+  background: var(--skyline-white);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-skyline);
+  border: 1px solid var(--skyline-border-subtle);
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.skyline-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+}
+
+.skyline-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--skyline-charcoal);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.skyline-expand-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--skyline-canvas);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--skyline-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.skyline-expand-btn:hover {
+  background: #E8E8E8;
+  color: var(--skyline-charcoal);
+}
+
+/* System Health Overview Mini Card */
+.skyline-subsystem-box {
+  background: var(--skyline-white);
+  border: 1px solid var(--skyline-border);
+  border-radius: var(--radius-inner);
+  padding: 1.1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.15s ease;
+}
+
+.skyline-subsystem-box:hover {
+  border-color: #D0D4DA;
+  box-shadow: var(--shadow-subtle);
+}
+
+/* ==========================================================================
+   SKYLINE DATA TABLES
+   ========================================================================== */
+.skyline-table-wrapper {
+  background: var(--skyline-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-skyline);
+  border: 1px solid var(--skyline-border-subtle);
+  overflow: hidden;
+}
+
+.skyline-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.skyline-table th {
+  background: var(--skyline-slate-light);
+  color: var(--skyline-text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid var(--skyline-border);
+  white-space: nowrap;
+}
+
+.skyline-table td {
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid var(--skyline-border-subtle);
+  color: var(--skyline-charcoal);
+  font-size: 0.88rem;
+  vertical-align: middle;
+}
+
+.skyline-table tbody tr:hover td {
+  background: #FBFBFC;
+}
+
+.skyline-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.skyline-table td.text-end,
+.skyline-table th.text-end {
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   AVATAR SYSTEM & BADGES
+   ========================================================================== */
+.skyline-avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.skyline-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--skyline-white) !important;
+  margin-left: -8px;
+  background: #CBD5E1;
+  color: var(--skyline-charcoal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.skyline-avatar:first-child {
+  margin-left: 0;
+}
+
+/* ==========================================================================
+   AIRCRAFT TWIN & GAUGE ASSETS
+   ========================================================================== */
+.readiness-gauge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.readiness-gauge-svg {
+  width: 220px;
+  height: 120px;
+  overflow: visible;
+}
+
+.aircraft-showcase-card {
+  background: var(--skyline-white);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  position: relative;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-skyline);
+  border: 1px solid var(--skyline-border-subtle);
+  overflow: hidden;
+}
+
+.aircraft-zoom-controls {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--skyline-white);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--skyline-border);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.aircraft-zoom-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--skyline-charcoal);
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.aircraft-zoom-btn:hover {
+  background: var(--skyline-canvas);
+}
+
+.orbit-indicator-pill {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--skyline-white);
+  border: 1px solid var(--skyline-border);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.85rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--skyline-charcoal);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Live Pulse Animation for Telemetry */
+@keyframes skylinePulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pulse-live {
+  animation: skylinePulse 2s infinite ease-in-out;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 991px) {
+  .skyline-navbar-container {
+    padding: 0.75rem 1rem 0.25rem 1rem;
+  }
+  .skyline-navbar {
+    border-radius: var(--radius-card);
+    flex-wrap: wrap;
+    padding: 0.65rem 1rem;
+  }
+  .skyline-nav-pills {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* ==========================================================================
+   ENTERPRISE AEROSPACE DESIGN TOKENS (REFINED HUMAN-ENGINEERED SYSTEM)
+   ========================================================================== */
+:root {
+  --ent-bg: #F6F7F9;
+  --ent-surface: #FFFFFF;
+  --ent-text-primary: #20252B;
+  --ent-text-secondary: #68717D;
+  --ent-text-muted: #8E97A4;
+  --ent-border: #E5E8EC;
+  --ent-border-subtle: #EEF0F3;
+  --ent-dark: #17212F;
+  --ent-muted-surface: #F8FAFC;
+  
+  /* Semantic Restrained Colors */
+  --ent-green: #24845B;
+  --ent-green-bg: rgba(36, 132, 91, 0.08);
+  --ent-green-border: rgba(36, 132, 91, 0.22);
+  
+  --ent-amber: #C78522;
+  --ent-amber-bg: rgba(199, 133, 34, 0.08);
+  --ent-amber-border: rgba(199, 133, 34, 0.22);
+  
+  --ent-red: #C84A4A;
+  --ent-red-bg: rgba(200, 74, 74, 0.08);
+  --ent-red-border: rgba(200, 74, 74, 0.22);
+  
+  --ent-info: #426B91;
+  --ent-info-bg: rgba(66, 107, 145, 0.08);
+  --ent-info-border: rgba(66, 107, 145, 0.22);
+}
+
+.ent-metric-card {
+  background: var(--ent-surface);
+  border: 1px solid var(--ent-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 148px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ent-metric-card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.ent-metric-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ent-text-secondary);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+}
+
+.ent-metric-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ent-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.ent-metric-subtext {
+  font-size: 0.8rem;
+  color: var(--ent-text-secondary);
+  margin-top: 0.25rem;
+  line-height: 1.35;
+}
+
+.ent-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.ent-badge-capable {
+  background: var(--ent-green-bg);
+  color: var(--ent-green);
+  border: 1px solid var(--ent-green-border);
+}
+
+.ent-badge-inspection {
+  background: var(--ent-amber-bg);
+  color: var(--ent-amber);
+  border: 1px solid var(--ent-amber-border);
+}
+
+.ent-badge-maintenance {
+  background: var(--ent-red-bg);
+  color: var(--ent-red);
+  border: 1px solid var(--ent-red-border);
+}
+
+.ent-badge-neutral {
+  background: #F3F4F6;
+  color: #4B5563;
+  border: 1px solid #E5E7EB;
+}
+
+.ent-table-header {
+  background: #F8FAFC !important;
+  color: #68717D !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  padding: 0.85rem 1.15rem !important;
+  border-bottom: 1px solid var(--ent-border) !important;
+}
+
+.ent-table-row {
+  border-bottom: 1px solid var(--ent-border-subtle);
+  transition: background-color 0.12s ease;
+}
+
+.ent-table-row:hover {
+  background-color: #FBFBFC;
+}
+
+.ent-table-cell {
+  padding: 0.95rem 1.15rem;
+  vertical-align: middle;
+}
+

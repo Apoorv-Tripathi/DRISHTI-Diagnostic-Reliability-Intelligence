@@ -1,0 +1,24 @@
+{
+  "name": "project-drishti-platform",
+  "version": "1.0.0",
+  "description": "PROJECT D.R.I.S.H.T.I. - Predictive Maintenance & Fleet Availability Platform (SIH 2026 - PS 26249)",
+  "scripts": {
+    "start": "cd Backend && node server.js",
+    "backend": "cd Backend && node server.js",
+    "server": "cd Backend && node server.js",
+    "frontend": "cd Frontend && npm run dev",
+    "client": "cd Frontend && npm run dev",
+    "build": "cd Frontend && npm run build",
+    "seed": "cd Backend && node seed.js"
+  },
+  "keywords": [
+    "sih2026",
+    "drishti",
+    "predictive-maintenance",
+    "mern-stack",
+    "aerospace",
+    "defence"
+  ],
+  "author": "SIH 2026 Team",
+  "license": "ISC"
+}
