@@ -1,7 +1,8 @@
 // Real Connected API Client for PROJECT D.R.I.S.H.T.I.
 // Strict backend communication with JWT Authentication & MongoDB Atlas persistence
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+const rawApiBase = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE = rawApiBase.replace(/\/+$/, '');
 
 // Helper to get stored JWT token
 export const getAuthToken = () => {
@@ -53,7 +54,7 @@ export const login = async (username, password) => {
     return { token: data.token, user: data.user };
   } catch (err) {
     if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-      throw new Error('Connection refused: Backend server is offline or unreachable on http://localhost:5001. Please run "npm start".');
+      throw new Error('Connection refused: Backend server is unreachable. If deployed on Render, please allow ~45s for the free instance to spin up.');
     }
     throw err;
   }
