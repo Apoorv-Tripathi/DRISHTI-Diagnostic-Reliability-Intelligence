@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
   Plane,
-  AlertTriangle,
-  Cpu,
-  Wrench,
-  Package,
-  BarChart3,
   LogOut,
   PlusCircle,
   CheckSquare,
-  Bell,
-  User,
-  Clock,
-  Compass,
-  Zap
+  Bell
 } from 'lucide-react';
 
 export default function Navbar({

@@ -346,22 +346,12 @@ export default function App() {
             {currentUser && activePage === 'aircraft' && (
               <AircraftDetail
                 aircraft={currentAircraft}
+                aircraftList={aircraftList}
+                onSelectAircraft={setSelectedAircraftId}
                 alerts={alerts}
                 workOrders={workOrders}
                 onNavigate={setActivePage}
                 onOpenWorkOrderModal={handleOpenWorkOrderModal}
-              />
-            )}
-
-            {currentUser && activePage === 'predictive' && (
-              <FleetOverview
-                aircraftList={aircraftList}
-                alerts={alerts}
-                workOrders={workOrders}
-                onSelectAircraft={setSelectedAircraftId}
-                onNavigate={setActivePage}
-                onOpenAssignJobModal={() => setIsAssignModalOpen(true)}
-                onValidateOrder={handleValidateOrder}
               />
             )}
 
